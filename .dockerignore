@@ -1,0 +1,5 @@
+**/target/
+results/
+.git/
+.idea/
+.vscode/

@@ -1,0 +1,47 @@
+# A and B talk over loopback inside B's network namespace, like the original incident.
+# See docs/BACKGROUND.md for why loopback + tcp_tw_reuse=0 matters.
+name: connpool
+
+x-app: &app
+  build:
+    context: ..
+    dockerfile: docker/Dockerfile
+  image: connpool:dev
+
+services:
+  b:
+    <<: *app
+    command: ["java", "-jar", "/app/service-b.jar"]
+    # b owns the network namespace, so the namespace's sysctls and ports are set here.
+    sysctls:
+      # 0 emulates Ubuntu 18.04's kernel default; the modern default (2) hides the bug on loopback.
+      net.ipv4.tcp_tw_reuse: ${TW_REUSE:-0}
+      # The Linux default, stated explicitly: 28,232 ephemeral ports.
+      net.ipv4.ip_local_port_range: "32768 60999"
+    ports:
+      - "8081:8081"   # A's port, for manual curl from the host
+
+  a:
+    <<: *app
+    command: ["java", "-jar", "/app/service-a.jar"]
+    network_mode: "service:b"   # share b's loopback
+    depends_on: [b]
+    environment:
+      CLIENT: ${CLIENT:-fresh}
+      B_HOST: 127.0.0.1
+      B_PORT: "8080"
+
+  sampler:
+    image: alpine:3
+    network_mode: "service:b"   # sees A's and B's sockets
+    depends_on: [b]
+    command: ["sh", "/scripts/sample-sockets.sh"]
+    volumes:
+      - ../scripts/sample-sockets.sh:/scripts/sample-sockets.sh:ro
+      - ../results/_current:/out
+
+  # Runs only via `docker compose run oha ...` (see scripts/run-scenario.sh).
+  # Outside b's namespace, so its own connections don't use A's ephemeral ports.
+  oha:
+    image: ghcr.io/hatoo/oha:1.16.0
+    profiles: ["load"]

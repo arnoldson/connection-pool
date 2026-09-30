@@ -1,0 +1,6 @@
+target/
+results/_current/
+.idea/
+*.iml
+.vscode/
+.DS_Store

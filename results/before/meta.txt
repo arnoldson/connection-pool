@@ -1,0 +1,6 @@
+name=before client=fresh rate=1000 duration=90s
+kernel=7.0.14-orbstack-00380-ga7e0a2dc9535
+tcp_tw_reuse=0
+ip_local_port_range=32768 60999
+load_start_epoch=1790791192
+load_end_epoch=1790791283
