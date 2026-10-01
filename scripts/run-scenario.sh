@@ -75,7 +75,7 @@ start=$(grep load_start_epoch "$dir/meta.txt" | cut -d= -f2)
 max_tw=$(tail -n +2 "$dir/sockets.csv" | cut -d, -f2 | sort -n | tail -1)
 first_err=$(awk -F, -v s="$start" 'NR>1 && $1>=s && $3>0 {print $1-s; exit}' "$dir/a-stats.csv")
 if [ -n "$first_err" ]; then first_err_text="t=${first_err}s"; else first_err_text=none; fi
-totals=$(awk -F, -v s="$start" 'NR>1 && $1>=s {ok+=$2; err+=$3} END {print ok" ok, "err" errors"}' "$dir/a-stats.csv")
+totals=$(awk -F, -v s="$start" 'NR>1 && $1>s {ok+=$2; err+=$3} END {print ok" ok, "err" errors"}' "$dir/a-stats.csv")
 a_cpu=$(awk -F, -v s="$start" 'NR>1 && $1>=s && $2!="" {sum+=$2; n++} END {if (n) printf "%.0f%%", sum/n}' "$dir/cpu.csv")
 echo "== $name done: $totals; peak A-side TIME_WAIT=$max_tw; first error: $first_err_text; A avg CPU=${a_cpu:-n/a} of one core"
 grep '^error-first,' "$dir/a.log" | cut -d, -f2- | sed 's/^/   error type: /' || true

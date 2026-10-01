@@ -28,6 +28,8 @@ services:
     depends_on: [b]
     environment:
       CLIENT: ${CLIENT:-fresh}
+      POOL_MAX: ${POOL_MAX:-32}
+      POOL_ON_EXHAUSTED: ${POOL_ON_EXHAUSTED:-block}
       B_HOST: 127.0.0.1
       B_PORT: "8080"
 

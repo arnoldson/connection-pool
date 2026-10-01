@@ -11,6 +11,7 @@
 
     <modules>
         <module>http-mini</module>
+        <module>pool</module>
         <module>service-b</module>
         <module>service-a</module>
     </modules>
@@ -48,6 +49,11 @@
             <dependency>
                 <groupId>dev.connpool</groupId>
                 <artifactId>http-mini</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.connpool</groupId>
+                <artifactId>pool</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
