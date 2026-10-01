@@ -1,112 +1,113 @@
 service-a: CLIENT=fresh -> B at 127.0.0.1:8080
 [main] INFO org.eclipse.jetty.server.Server - jetty-12.1.13; built: 2026-09-04T06:53:08.311Z; git: e99386749a0a4888cd9b555ffc96a476fd48d94e; jvm 25.0.4.1+1-LTS
-[main] INFO org.eclipse.jetty.server.AbstractConnector - Started oejs.ServerConnector@12405818{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
-[main] INFO org.eclipse.jetty.server.Server - Started oejs.Server@6b67034{STARTING}[12.1.13,sto=0] @16ms
+[main] INFO org.eclipse.jetty.server.AbstractConnector - Started oejs.ServerConnector@3048fed7{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+[main] INFO org.eclipse.jetty.server.Server - Started oejs.Server@16267862{STARTING}[12.1.13,sto=0] @16ms
 stats,window_end_epoch,ok,errors,distinct_local_ports,errors_by_type
-stats,1790791118,0,0,0,
-stats,1790791119,56,0,56,
-stats,1790791120,199,0,200,
-stats,1790791121,200,0,199,
-stats,1790791122,200,0,200,
-stats,1790791123,199,0,200,
-stats,1790791124,201,0,201,
-stats,1790791125,201,0,200,
-stats,1790791126,200,0,200,
-stats,1790791127,199,0,199,
-stats,1790791128,200,0,200,
-stats,1790791129,147,0,147,
-stats,1790791130,0,0,0,
-stats,1790791131,0,0,0,
-stats,1790791132,0,0,0,
-stats,1790791133,0,0,0,
-stats,1790791134,0,0,0,
-stats,1790791135,0,0,0,
-stats,1790791136,0,0,0,
-stats,1790791137,0,0,0,
-stats,1790791138,0,0,0,
-stats,1790791139,0,0,0,
-stats,1790791140,0,0,0,
-stats,1790791141,0,0,0,
-stats,1790791142,0,0,0,
-stats,1790791143,0,0,0,
-stats,1790791144,0,0,0,
-stats,1790791145,0,0,0,
-stats,1790791146,0,0,0,
-stats,1790791147,0,0,0,
-stats,1790791148,0,0,0,
-stats,1790791149,0,0,0,
-stats,1790791150,0,0,0,
-stats,1790791151,0,0,0,
-stats,1790791152,0,0,0,
-stats,1790791153,0,0,0,
-stats,1790791154,0,0,0,
-stats,1790791155,0,0,0,
-stats,1790791156,0,0,0,
-stats,1790791157,0,0,0,
-stats,1790791158,0,0,0,
-stats,1790791159,0,0,0,
-stats,1790791160,0,0,0,
-stats,1790791161,0,0,0,
-stats,1790791162,0,0,0,
-stats,1790791163,0,0,0,
-stats,1790791164,0,0,0,
-stats,1790791165,0,0,0,
-stats,1790791166,0,0,0,
-stats,1790791167,0,0,0,
-stats,1790791168,0,0,0,
-stats,1790791169,0,0,0,
-stats,1790791170,0,0,0,
-stats,1790791171,0,0,0,
-stats,1790791172,0,0,0,
-stats,1790791173,0,0,0,
-stats,1790791174,0,0,0,
-stats,1790791175,0,0,0,
-stats,1790791176,0,0,0,
-stats,1790791177,0,0,0,
-stats,1790791178,0,0,0,
-stats,1790791179,0,0,0,
-stats,1790791180,0,0,0,
-stats,1790791181,0,0,0,
-stats,1790791182,0,0,0,
-stats,1790791183,0,0,0,
-stats,1790791184,0,0,0,
-stats,1790791185,0,0,0,
-stats,1790791186,0,0,0,
-stats,1790791187,0,0,0,
-stats,1790791188,0,0,0,
-stats,1790791189,0,0,0,
-stats,1790791190,0,0,0,
-stats,1790791191,0,0,0,
-stats,1790791192,0,0,0,
-stats,1790791193,0,0,0,
-stats,1790791194,863,0,863,
-stats,1790791195,997,0,997,
-stats,1790791196,1003,0,1004,
-stats,1790791197,999,0,998,
-stats,1790791198,1000,0,1001,
-stats,1790791199,999,0,998,
-stats,1790791200,998,0,998,
-stats,1790791201,1000,0,1000,
-stats,1790791202,1004,0,1006,
-stats,1790791203,998,0,998,
-stats,1790791204,998,0,1001,
-stats,1790791205,1000,0,1000,
-stats,1790791206,1001,0,996,
-stats,1790791207,1002,0,1003,
-stats,1790791208,1000,0,999,
-stats,1790791209,997,0,997,
-stats,1790791210,1003,0,1003,
-stats,1790791211,1001,0,1001,
-stats,1790791212,996,0,996,
-stats,1790791213,1003,0,1003,
-stats,1790791214,1000,0,1000,
-stats,1790791215,1001,0,1001,
-stats,1790791216,999,0,999,
-stats,1790791217,997,0,998,
-stats,1790791218,1003,0,1002,
-stats,1790791219,1000,0,1000,
-stats,1790791220,999,0,999,
-stats,1790791221,997,0,997,
+stats,1790871370,0,0,0,
+stats,1790871371,100,0,100,
+stats,1790871372,201,0,201,
+stats,1790871373,198,0,199,
+stats,1790871374,201,0,200,
+stats,1790871375,201,0,201,
+stats,1790871376,199,0,199,
+stats,1790871377,200,0,200,
+stats,1790871378,201,0,201,
+stats,1790871379,199,0,199,
+stats,1790871380,199,0,199,
+stats,1790871381,102,0,102,
+stats,1790871382,0,0,0,
+stats,1790871383,0,0,0,
+stats,1790871384,0,0,0,
+stats,1790871385,0,0,0,
+stats,1790871386,0,0,0,
+stats,1790871387,0,0,0,
+stats,1790871388,0,0,0,
+stats,1790871389,0,0,0,
+stats,1790871390,0,0,0,
+stats,1790871391,0,0,0,
+stats,1790871392,0,0,0,
+stats,1790871393,0,0,0,
+stats,1790871394,0,0,0,
+stats,1790871395,0,0,0,
+stats,1790871396,0,0,0,
+stats,1790871397,0,0,0,
+stats,1790871398,0,0,0,
+stats,1790871399,0,0,0,
+stats,1790871400,0,0,0,
+stats,1790871401,0,0,0,
+stats,1790871402,0,0,0,
+stats,1790871403,0,0,0,
+stats,1790871404,0,0,0,
+stats,1790871405,0,0,0,
+stats,1790871406,0,0,0,
+stats,1790871407,0,0,0,
+stats,1790871408,0,0,0,
+stats,1790871409,0,0,0,
+stats,1790871410,0,0,0,
+stats,1790871411,0,0,0,
+stats,1790871412,0,0,0,
+stats,1790871413,0,0,0,
+stats,1790871414,0,0,0,
+stats,1790871415,0,0,0,
+stats,1790871416,0,0,0,
+stats,1790871417,0,0,0,
+stats,1790871418,0,0,0,
+stats,1790871419,0,0,0,
+stats,1790871420,0,0,0,
+stats,1790871421,0,0,0,
+stats,1790871422,0,0,0,
+stats,1790871423,0,0,0,
+stats,1790871424,0,0,0,
+stats,1790871425,0,0,0,
+stats,1790871426,0,0,0,
+stats,1790871427,0,0,0,
+stats,1790871428,0,0,0,
+stats,1790871429,0,0,0,
+stats,1790871430,0,0,0,
+stats,1790871431,0,0,0,
+stats,1790871432,0,0,0,
+stats,1790871433,0,0,0,
+stats,1790871434,0,0,0,
+stats,1790871435,0,0,0,
+stats,1790871436,0,0,0,
+stats,1790871437,0,0,0,
+stats,1790871438,0,0,0,
+stats,1790871439,0,0,0,
+stats,1790871440,0,0,0,
+stats,1790871441,0,0,0,
+stats,1790871442,0,0,0,
+stats,1790871443,0,0,0,
+stats,1790871444,0,0,0,
+stats,1790871445,0,0,0,
+stats,1790871446,0,0,0,
+stats,1790871447,928,0,928,
+stats,1790871448,1003,0,1003,
+stats,1790871449,998,0,998,
+stats,1790871450,1005,0,1005,
+stats,1790871451,996,0,996,
+stats,1790871452,1007,0,1008,
+stats,1790871453,993,0,992,
+stats,1790871454,1001,0,1001,
+stats,1790871455,1002,0,1002,
+stats,1790871456,997,0,1001,
+stats,1790871457,999,0,995,
+stats,1790871458,1003,0,1003,
+stats,1790871459,998,0,1000,
+stats,1790871460,1003,0,1001,
+stats,1790871461,994,0,996,
+stats,1790871462,1002,0,1002,
+stats,1790871463,1003,0,1001,
+stats,1790871464,999,0,999,
+stats,1790871465,998,0,1000,
+stats,1790871466,1003,0,1001,
+stats,1790871467,999,0,999,
+stats,1790871468,999,0,1000,
+stats,1790871469,997,0,999,
+stats,1790871470,1005,0,1002,
+stats,1790871471,999,0,999,
+stats,1790871472,997,0,998,
+stats,1790871473,1004,0,1003,
+stats,1790871474,998,0,1000,
 error-first,java.net.BindException: Cannot assign requested address
 java.net.BindException: Cannot assign requested address
 	at java.base/sun.nio.ch.Net.connect0(Native Method)
@@ -116,7 +117,7 @@ java.net.BindException: Cannot assign requested address
 	at java.base/java.net.SocksSocketImpl.connect(Unknown Source)
 	at java.base/java.net.Socket.connect(Unknown Source)
 	at dev.connpool.a.FreshConnectionClient.get(FreshConnectionClient.java:44)
-	at dev.connpool.a.ServiceA$CallHandler.handle(ServiceA.java:77)
+	at dev.connpool.a.ServiceA$CallHandler.handle(ServiceA.java:105)
 	at org.eclipse.jetty.server.Server.handle(Server.java:197)
 	at org.eclipse.jetty.server.internal.HttpChannelState$HandlerInvoker.run(HttpChannelState.java:804)
 	at org.eclipse.jetty.server.internal.HttpConnection.onFillable(HttpConnection.java:420)
@@ -133,67 +134,127 @@ java.net.BindException: Cannot assign requested address
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1240)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1194)
 	at java.base/java.lang.Thread.run(Unknown Source)
-stats,1790791222,373,631,373,java.net.BindException: Cannot assign requested address=631
-stats,1790791223,0,999,0,java.net.BindException: Cannot assign requested address=999
-stats,1790791224,0,997,0,java.net.BindException: Cannot assign requested address=997
-stats,1790791225,0,1001,0,java.net.BindException: Cannot assign requested address=1001
-stats,1790791226,0,1002,0,java.net.BindException: Cannot assign requested address=1002
-stats,1790791227,0,1002,0,java.net.BindException: Cannot assign requested address=1002
-stats,1790791228,0,999,0,java.net.BindException: Cannot assign requested address=999
-stats,1790791229,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791230,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791231,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791232,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791233,0,999,0,java.net.BindException: Cannot assign requested address=999
-stats,1790791234,0,997,0,java.net.BindException: Cannot assign requested address=997
-stats,1790791235,0,999,0,java.net.BindException: Cannot assign requested address=999
-stats,1790791236,0,1005,0,java.net.BindException: Cannot assign requested address=1005
-stats,1790791237,0,997,0,java.net.BindException: Cannot assign requested address=997
-stats,1790791238,0,1002,0,java.net.BindException: Cannot assign requested address=1002
-stats,1790791239,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791240,0,997,0,java.net.BindException: Cannot assign requested address=997
-stats,1790791241,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791242,0,1004,0,java.net.BindException: Cannot assign requested address=1004
-stats,1790791243,0,998,0,java.net.BindException: Cannot assign requested address=998
-stats,1790791244,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791245,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791246,0,1001,0,java.net.BindException: Cannot assign requested address=1001
-stats,1790791247,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791248,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791249,0,997,0,java.net.BindException: Cannot assign requested address=997
-stats,1790791250,0,1007,0,java.net.BindException: Cannot assign requested address=1007
-stats,1790791251,0,995,0,java.net.BindException: Cannot assign requested address=995
-stats,1790791252,0,1004,0,java.net.BindException: Cannot assign requested address=1004
-stats,1790791253,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791254,0,997,0,java.net.BindException: Cannot assign requested address=997
-stats,1790791255,0,1000,0,java.net.BindException: Cannot assign requested address=1000
-stats,1790791256,0,997,0,java.net.BindException: Cannot assign requested address=997
-stats,1790791257,163,839,167,java.net.BindException: Cannot assign requested address=839
-stats,1790791258,1001,0,997,
-stats,1790791259,1001,0,1001,
-stats,1790791260,1000,0,1002,
-stats,1790791261,599,399,597,java.net.BindException: Cannot assign requested address=399
-stats,1790791262,1002,0,1002,
-stats,1790791263,997,0,1001,
-stats,1790791264,1002,0,998,
-stats,1790791265,998,0,998,
-stats,1790791266,1000,1,1000,java.net.BindException: Cannot assign requested address=1
-stats,1790791267,1003,0,1003,
-stats,1790791268,998,0,998,
-stats,1790791269,998,0,998,
-stats,1790791270,1004,0,1005,
-stats,1790791271,998,0,997,
-stats,1790791272,998,0,998,
-stats,1790791273,1005,0,1005,
-stats,1790791274,998,0,998,
-stats,1790791275,1001,0,1001,
-stats,1790791276,999,0,999,
-stats,1790791277,998,0,998,
-stats,1790791278,999,0,999,
-stats,1790791279,1003,0,1003,
-stats,1790791280,998,0,1000,
-stats,1790791281,1000,0,1000,
-stats,1790791282,999,0,997,
-stats,1790791283,1003,0,1003,
-stats,1790791284,138,0,138,
-stats,1790791285,0,0,0,
+stats,1790871475,301,699,299,java.net.BindException: Cannot assign requested address=699
+stats,1790871476,0,1002,0,java.net.BindException: Cannot assign requested address=1002
+stats,1790871477,0,998,0,java.net.BindException: Cannot assign requested address=998
+stats,1790871478,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871479,0,998,0,java.net.BindException: Cannot assign requested address=998
+stats,1790871480,0,1006,0,java.net.BindException: Cannot assign requested address=1006
+stats,1790871481,0,996,0,java.net.BindException: Cannot assign requested address=996
+stats,1790871482,0,998,0,java.net.BindException: Cannot assign requested address=998
+stats,1790871483,0,1003,0,java.net.BindException: Cannot assign requested address=1003
+stats,1790871484,0,1000,0,java.net.BindException: Cannot assign requested address=1000
+stats,1790871485,0,996,0,java.net.BindException: Cannot assign requested address=996
+stats,1790871486,0,1004,0,java.net.BindException: Cannot assign requested address=1004
+stats,1790871487,0,997,0,java.net.BindException: Cannot assign requested address=997
+stats,1790871488,0,1002,0,java.net.BindException: Cannot assign requested address=1002
+stats,1790871489,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871490,0,1002,0,java.net.BindException: Cannot assign requested address=1002
+stats,1790871491,0,995,0,java.net.BindException: Cannot assign requested address=995
+stats,1790871492,0,999,0,java.net.BindException: Cannot assign requested address=999
+stats,1790871493,0,1004,0,java.net.BindException: Cannot assign requested address=1004
+stats,1790871494,0,1000,0,java.net.BindException: Cannot assign requested address=1000
+stats,1790871495,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871496,0,998,0,java.net.BindException: Cannot assign requested address=998
+stats,1790871497,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871498,0,996,0,java.net.BindException: Cannot assign requested address=996
+stats,1790871499,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871500,0,1003,0,java.net.BindException: Cannot assign requested address=1003
+stats,1790871501,0,1000,0,java.net.BindException: Cannot assign requested address=1000
+stats,1790871502,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871503,0,995,0,java.net.BindException: Cannot assign requested address=995
+stats,1790871504,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871505,0,1003,0,java.net.BindException: Cannot assign requested address=1003
+stats,1790871506,0,995,0,java.net.BindException: Cannot assign requested address=995
+stats,1790871507,0,1002,0,java.net.BindException: Cannot assign requested address=1002
+stats,1790871508,0,1002,0,java.net.BindException: Cannot assign requested address=1002
+stats,1790871509,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871510,232,764,236,java.net.BindException: Cannot assign requested address=764
+stats,1790871511,997,0,997,
+stats,1790871512,1007,0,1004,
+stats,1790871513,998,0,997,
+stats,1790871514,598,402,598,java.net.BindException: Cannot assign requested address=402
+stats,1790871515,1000,0,1000,
+stats,1790871516,1000,0,1000,
+stats,1790871517,1002,0,1002,
+stats,1790871518,1000,0,1000,
+stats,1790871519,1001,0,1001,
+stats,1790871520,1000,0,1001,
+stats,1790871521,999,0,998,
+stats,1790871522,998,0,999,
+stats,1790871523,998,0,997,
+stats,1790871524,1006,0,1006,
+stats,1790871525,999,0,999,
+stats,1790871526,998,0,998,
+stats,1790871527,999,0,999,
+stats,1790871528,1005,0,1005,
+stats,1790871529,999,0,999,
+stats,1790871530,994,0,994,
+stats,1790871531,1003,0,1004,
+stats,1790871532,1002,0,1002,
+stats,1790871533,1003,0,1002,
+stats,1790871534,996,0,997,
+stats,1790871535,1000,0,999,
+stats,1790871536,1004,0,1004,
+stats,1790871537,1000,0,1000,
+stats,1790871538,999,0,999,
+stats,1790871539,394,605,394,java.net.BindException: Cannot assign requested address=605
+stats,1790871540,0,995,0,java.net.BindException: Cannot assign requested address=995
+stats,1790871541,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871542,0,999,0,java.net.BindException: Cannot assign requested address=999
+stats,1790871543,0,1005,0,java.net.BindException: Cannot assign requested address=1005
+stats,1790871544,0,998,0,java.net.BindException: Cannot assign requested address=998
+stats,1790871545,0,996,0,java.net.BindException: Cannot assign requested address=996
+stats,1790871546,0,1003,0,java.net.BindException: Cannot assign requested address=1003
+stats,1790871547,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871548,0,1004,0,java.net.BindException: Cannot assign requested address=1004
+stats,1790871549,0,995,0,java.net.BindException: Cannot assign requested address=995
+stats,1790871550,0,1002,0,java.net.BindException: Cannot assign requested address=1002
+stats,1790871551,0,996,0,java.net.BindException: Cannot assign requested address=996
+stats,1790871552,0,1002,0,java.net.BindException: Cannot assign requested address=1002
+stats,1790871553,0,999,0,java.net.BindException: Cannot assign requested address=999
+stats,1790871554,0,1002,0,java.net.BindException: Cannot assign requested address=1002
+stats,1790871555,0,1000,0,java.net.BindException: Cannot assign requested address=1000
+stats,1790871556,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871557,0,997,0,java.net.BindException: Cannot assign requested address=997
+stats,1790871558,0,999,0,java.net.BindException: Cannot assign requested address=999
+stats,1790871559,0,1005,0,java.net.BindException: Cannot assign requested address=1005
+stats,1790871560,0,998,0,java.net.BindException: Cannot assign requested address=998
+stats,1790871561,0,1000,0,java.net.BindException: Cannot assign requested address=1000
+stats,1790871562,0,1002,0,java.net.BindException: Cannot assign requested address=1002
+stats,1790871563,0,998,0,java.net.BindException: Cannot assign requested address=998
+stats,1790871564,0,1004,0,java.net.BindException: Cannot assign requested address=1004
+stats,1790871565,0,997,0,java.net.BindException: Cannot assign requested address=997
+stats,1790871566,0,997,0,java.net.BindException: Cannot assign requested address=997
+stats,1790871567,0,1000,0,java.net.BindException: Cannot assign requested address=1000
+stats,1790871568,0,1000,0,java.net.BindException: Cannot assign requested address=1000
+stats,1790871569,0,1006,0,java.net.BindException: Cannot assign requested address=1006
+stats,1790871570,0,1001,0,java.net.BindException: Cannot assign requested address=1001
+stats,1790871571,0,1000,0,java.net.BindException: Cannot assign requested address=1000
+stats,1790871572,794,199,794,java.net.BindException: Cannot assign requested address=199
+stats,1790871573,645,355,645,java.net.BindException: Cannot assign requested address=355
+stats,1790871574,0,1002,0,java.net.BindException: Cannot assign requested address=1002
+stats,1790871575,0,998,0,java.net.BindException: Cannot assign requested address=998
+stats,1790871576,702,299,702,java.net.BindException: Cannot assign requested address=299
+stats,1790871577,1008,0,1008,
+stats,1790871578,991,0,991,
+stats,1790871579,991,9,991,java.net.BindException: Cannot assign requested address=9
+stats,1790871580,601,397,605,java.net.BindException: Cannot assign requested address=397
+stats,1790871581,1003,0,999,
+stats,1790871582,1005,0,1005,
+stats,1790871583,993,0,997,
+stats,1790871584,1002,0,998,
+stats,1790871585,1004,0,1005,
+stats,1790871586,996,0,997,
+stats,1790871587,999,0,999,
+stats,1790871588,1001,0,1001,
+stats,1790871589,1001,0,999,
+stats,1790871590,999,0,999,
+stats,1790871591,999,0,999,
+stats,1790871592,998,0,998,
+stats,1790871593,1007,0,1007,
+stats,1790871594,1000,0,1000,
+stats,1790871595,995,0,995,
+stats,1790871596,1001,0,1001,
+stats,1790871597,69,0,69,
+stats,1790871598,0,0,0,

@@ -4,3 +4,4 @@ results/_current/
 *.iml
 .vscode/
 .DS_Store
+results/.logs/

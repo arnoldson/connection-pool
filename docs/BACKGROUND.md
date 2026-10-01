@@ -257,3 +257,26 @@ The socat measurement above already shows it.
   reproduction uses an explicit one-connection-per-request client.
 - The exact Java and Jetty versions at the time. Unknown; they don't affect
   the kernel behavior.
+
+### Phase 2: the pool
+
+`scripts/run-all.sh before pool`: both scenarios at 1,000 requests/s for
+150 s, `tcp_tw_reuse=0`, the default range. This replaces the 90 s
+`results/before/` from Phase 1.
+
+| Scenario | OK | Errors | Peak A-side TIME_WAIT | A CPU (avg, one core) | p50 | p99 |
+|---|---|---|---|---|---|---|
+| before (fresh connection per request) | 78,266 | 71,734 | 28,231 | 70% | 0.92 ms* | 2.69 ms* |
+| pool (`SocketConnectionPool`, max 32) | 150,006 | **0** | 11 | **17%** | **0.35 ms** | **1.36 ms** |
+
+\* Includes fast-failing 502s, which pull the percentiles down. Even so, the
+pool's latency is lower.
+
+- **The sawtooth is visible over 150 s.** `before` fails at about 30 s,
+  recovers at about 65 s, fails again at about 95 s and recovers again at
+  about 125 s. It averaged 522 successful calls/s, close to the ~470/s limit.
+- **The pool used at most 32 connections, and usually far fewer:** 7 were
+  ESTABLISHED midway through the run. A-side TIME_WAIT stayed at 0 during
+  the load. The peak of 11 comes from shutdown and idle expiry.
+- **CPU fell from 70% to 17% of a core at the same request rate**, and
+  every request succeeded. No handshakes, no teardowns, no port searches.

@@ -1,9 +1,13 @@
 package dev.connpool.a;
 
 import dev.connpool.http.HttpResponse;
+import dev.connpool.pool.ExhaustedPolicy;
+import dev.connpool.pool.PoolConfig;
+import dev.connpool.pool.SocketConnectionPool;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.Map;
 import org.eclipse.jetty.http.HttpHeader;
 import org.eclipse.jetty.server.Handler;
@@ -35,6 +39,12 @@ public final class ServiceA {
         BClient client = switch (mode) {
             case "fresh" -> new FreshConnectionClient(bHost, bPort, connectTimeoutMs, readTimeoutMs,
                     stats::recordLocalPort);
+            case "pool" -> {
+                PoolConfig config = poolConfig(env, connectTimeoutMs);
+                System.out.println("service-a: " + config);
+                yield new PooledClient(new SocketConnectionPool(config), bHost, bPort, readTimeoutMs,
+                        stats::recordLocalPort);
+            }
             default -> throw new IllegalArgumentException("unknown CLIENT: " + mode);
         };
         System.out.println("service-a: CLIENT=" + mode + " -> B at " + bHost + ":" + bPort);
@@ -43,6 +53,24 @@ public final class ServiceA {
         server.start();
         stats.startReporting();
         server.join();
+    }
+
+    /** Pool settings from POOL_* environment variables, falling back to PoolConfig.defaults(). */
+    static PoolConfig poolConfig(Map<String, String> env, int connectTimeoutMs) {
+        PoolConfig d = PoolConfig.defaults();
+        ExhaustedPolicy policy = switch (env.getOrDefault("POOL_ON_EXHAUSTED", "block")) {
+            case "block" -> ExhaustedPolicy.BLOCK_WITH_TIMEOUT;
+            case "fail-fast" -> ExhaustedPolicy.FAIL_FAST;
+            default -> throw new IllegalArgumentException("POOL_ON_EXHAUSTED must be block or fail-fast");
+        };
+        return new PoolConfig(
+                Integer.parseInt(env.getOrDefault("POOL_MAX", String.valueOf(d.maxPerRoute()))),
+                Duration.ofMillis(Long.parseLong(env.getOrDefault("POOL_ACQUIRE_TIMEOUT_MS",
+                        String.valueOf(d.acquireTimeout().toMillis())))),
+                Duration.ofMillis(Long.parseLong(env.getOrDefault("POOL_MAX_IDLE_MS",
+                        String.valueOf(d.maxIdleTime().toMillis())))),
+                Duration.ofMillis(connectTimeoutMs),
+                policy);
     }
 
     public static Server createServer(int port, BClient client, Stats stats) {
