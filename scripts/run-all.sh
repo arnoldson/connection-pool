@@ -95,7 +95,7 @@ for scenario in "${scenarios[@]}"; do
   log=$logs/$scenario.log
   scripts/run-scenario.sh "$scenario" "$client" "$tw_reuse" "$rate" "$duration" </dev/null >"$log" 2>&1 &
   pid=$!
-  tw_hist=(); ok_hist=(); err_hist=(); last_plain=0
+  tw_hist=(); ok_hist=(); err_hist=(); last_plain=0; prev_phase=; phase_since=$(date +%s)
 
   while kill -0 $pid 2>/dev/null; do
     cur=results/_current
@@ -109,21 +109,33 @@ for scenario in "${scenarios[@]}"; do
     elif grep -q '^warm-up' "$log" 2>/dev/null; then phase=warm-up
     fi
 
+    [ "$phase" != "$prev_phase" ] && { prev_phase=$phase; phase_since=$(date +%s); }
+    in_phase=$(( $(date +%s) - phase_since ))
+
     IFS=, read -r _ tw _ est < <(tail -1 "$cur/sockets.csv" 2>/dev/null | grep -E '^[0-9]') || true
     IFS=, read -r _ cpu _ < <(tail -1 "$cur/cpu.csv" 2>/dev/null | grep -E '^[0-9]') || true
     IFS=, read -r _ _ ok err _ < <(docker logs --tail 5 connpool-a-1 2>/dev/null | grep '^stats,' | tail -1) || true
     tw=${tw:-0}; est=${est:-0}; ok=${ok:-0}; err=${err:-0}; cpu=${cpu:--}
     if [ "$phase" = load ]; then tw_hist+=("$tw"); ok_hist+=("$ok"); err_hist+=("$err"); fi
 
+    case $phase in
+      starting) hint="starting A, B and the socket sampler (${in_phase}s)" ;;
+      warm-up) hint="warming up the JIT at 200 req/s, not measured (${in_phase}s)" ;;
+      "draining TIME_WAIT") hint="waiting for warm-up TIME_WAIT to expire: ~$(( in_phase < 60 ? 60 - in_phase : 0 ))s left" ;;
+      load) hint="measuring: $rate req/s into A, one A->B call each" ;;
+      *) hint="saving results to results/$scenario/" ;;
+    esac
+
     if $tty; then
       errc=$GRN; [ "$err" -gt 0 ] && errc=$RED
       twc=$GRN; [ "$tw" -gt $((ports_total / 2)) ] && twc=$YEL; [ "$tw" -ge $((ports_total - 10)) ] && twc=$RED
       {
         printf '\033[H'
-        echo "${B}connection-pool${R} · full test run · scenario $n/${#scenarios[@]}$EL"
+        echo "${B}connection-pool${R} · full test run · scenario $n/${#scenarios[@]}   ${DIM}$(date +%H:%M:%S)${R}$EL"
         printf '─%.0s' $(seq 1 $cols); echo  # tr can't do this: '─' is 3 bytes in UTF-8
         echo "${B}▶ $scenario${R}  CLIENT=$client  tcp_tw_reuse=$tw_reuse  ${DIM}$rate req/s$R  phase: ${YEL}$phase$R$EL"
-        echo "  progress   $(bar $t $duration_s 40)  ${t}s / ${duration_s}s$EL"
+        echo "  ${DIM}$hint${R}$EL"
+        echo "  load       $(bar $t $duration_s 40)  ${t}s / ${duration_s}s$EL"
         echo "$EL"
         echo "  ${B}A-side TIME_WAIT${R}   ${twc}$(fmt "$tw")${R} / $(fmt $ports_total)$EL"
         echo "    now        $(bar "$tw" $ports_total 40)$EL"
@@ -139,7 +151,7 @@ for scenario in "${scenarios[@]}"; do
       }
     elif [ $(( $(date +%s) - last_plain )) -ge 10 ]; then
       last_plain=$(date +%s)
-      echo "[$n/${#scenarios[@]} $scenario] $phase t=${t}s time_wait=$tw established=$est ok/s=$ok err/s=$err cpu=$cpu%"
+      echo "[$n/${#scenarios[@]} $scenario] $phase (${in_phase}s) t=${t}s time_wait=$tw established=$est ok/s=$ok err/s=$err cpu=$cpu%"
     fi
     sleep 1
   done
