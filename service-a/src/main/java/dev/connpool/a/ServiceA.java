@@ -45,6 +45,9 @@ public final class ServiceA {
                 yield new PooledClient(new SocketConnectionPool(config), bHost, bPort, readTimeoutMs,
                         stats::recordLocalPort);
             }
+            case "jetty" -> new JettyClient(bHost, bPort,
+                    Integer.parseInt(env.getOrDefault("POOL_MAX", "32")), connectTimeoutMs, readTimeoutMs,
+                    stats::recordLocalPort);
             default -> throw new IllegalArgumentException("unknown CLIENT: " + mode);
         };
         System.out.println("service-a: CLIENT=" + mode + " -> B at " + bHost + ":" + bPort);

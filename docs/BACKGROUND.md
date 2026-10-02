@@ -170,10 +170,13 @@ new connection costs CPU in two ways:
    work fell to zero after exhaustion. A bigger machine doesn't help: extra
    cores just search the same full range in parallel.
 
-Mitigations such as a wider range or `tcp_tw_reuse=1` make ports free up
-faster, but A still pays both costs on every request. A pool pays them once
-per pooled connection, and then never again. Phase 3 records A's CPU in every
-scenario (`cpu.csv`) to compare these directly.
+**What Phase 3 measured.** With `tcp_tw_reuse=1` the range never fills, so
+cost 2 mostly disappears: A's CPU was 32% of a core vs the pool's 29%. Cost 1
+doesn't disappear, and most of it lands on the **server**. B has to accept and
+tear down 1,000 connections per second: **25% of a core vs 8% with the pool.**
+In total (A + B), that's 57% vs 37%, about 1.5× the pool. Latency was worse
+too: p50 +60%, p90 2×, p99 +56%. A pool pays these costs once per pooled
+connection, and then never again.
 
 ### Where the real "cut-off request" risk lives: the pool
 
@@ -258,25 +261,40 @@ The socat measurement above already shows it.
 - The exact Java and Jetty versions at the time. Unknown; they don't affect
   the kernel behavior.
 
-### Phase 2: the pool
+### Phases 2–3: one run, four scenarios
 
-`scripts/run-all.sh before pool`: both scenarios at 1,000 requests/s for
-150 s, `tcp_tw_reuse=0`, the default range. This replaces the 90 s
-`results/before/` from Phase 1.
+`scripts/run-all.sh`: all four scenarios back to back in one run, at 1,000
+requests/s for 150 s each, with the default port range. Running them together
+puts every scenario under the same machine conditions.
 
-| Scenario | OK | Errors | Peak A-side TIME_WAIT | A CPU (avg, one core) | p50 | p99 |
-|---|---|---|---|---|---|---|
-| before (fresh connection per request) | 78,266 | 71,734 | 28,231 | 70% | 0.92 ms* | 2.69 ms* |
-| pool (`SocketConnectionPool`, max 32) | 150,006 | **0** | 11 | **17%** | **0.35 ms** | **1.36 ms** |
+| Scenario | OK | Errors | Peak A-side TIME_WAIT | Max ESTABLISHED | A CPU | B CPU | p50 | p90 | p99 |
+|---|---|---|---|---|---|---|---|---|---|
+| before (fresh, `tw_reuse=0`) | 78,269 | 71,731 | 28,231 | – | 66% | – | 0.86 ms* | – | 3.56 ms* |
+| **pool** (ours, max 32) | 149,998 | **0** | 7 | 12 | **29%** | **8%** | **0.55 ms** | **1.34 ms** | **3.17 ms** |
+| jetty (`HttpClient`, max 32) | 150,057 | **0** | 24 | 20 | 37% | 8% | 0.71 ms | 1.57 ms | 3.57 ms |
+| mitigation (fresh, `tw_reuse=1`) | 149,997 | **0** | 14,045 | 3 | 32% | 25% | 0.88 ms | 2.84 ms | 4.94 ms |
 
-\* Includes fast-failing 502s, which pull the percentiles down. Even so, the
-pool's latency is lower.
+CPU is the average % of one core during the load. \* `before` includes
+fast-failing 502s, which pull its percentiles down.
 
-- **The sawtooth is visible over 150 s.** `before` fails at about 30 s,
-  recovers at about 65 s, fails again at about 95 s and recovers again at
-  about 125 s. It averaged 522 successful calls/s, close to the ~470/s limit.
-- **The pool used at most 32 connections, and usually far fewer:** 7 were
-  ESTABLISHED midway through the run. A-side TIME_WAIT stayed at 0 during
-  the load. The peak of 11 comes from shutdown and idle expiry.
-- **CPU fell from 70% to 17% of a core at the same request rate**, and
-  every request succeeded. No handshakes, no teardowns, no port searches.
+- **`before` fails and recovers in cycles.** It fails at about 30 s, recovers
+  at about 65 s, fails again at about 95 s and recovers at about 125 s. That
+  averages roughly 520 successful calls/s, close to the ~470/s limit.
+- **The pool fixes it.** Zero errors, A-side TIME_WAIT near 0 during the load
+  (the 7 come from shutdown and idle expiry), and at most 12 connections in
+  use out of 32.
+- **Our pool is comparable to Jetty's `HttpClient`.** Both have zero errors and
+  near-zero TIME_WAIT, with similar CPU and latency. Ours came out slightly
+  lighter, but it supports only a sliver of what Jetty's does (no redirects,
+  HTTP/2, chunked bodies or async API), so "comparable" is the fair reading.
+- **The mitigation avoids errors but not the cost.** Ports recycle after about
+  1 s, so nothing fails, but TIME_WAIT settles around 14,000 sockets (half the
+  range). Every request still pays a handshake, which costs B CPU and adds
+  latency (see "Opening connections costs CPU, not just ports").
+
+**Measurement noise.** These runs happen on a laptop shared with other
+containers. Between the Phase 2 run and this one, the pool's A CPU moved from
+17% to 29% and its p99 from 1.36 ms to 3.17 ms, under an identical
+configuration. Compare scenarios *within* one run; absolute numbers across runs
+can vary by roughly ±50%. Repeating each run several times and reporting
+medians would tighten this; we didn't, to keep scope lean.
