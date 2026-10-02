@@ -5,3 +5,4 @@ results/_current/
 .vscode/
 .DS_Store
 results/.logs/
+__pycache__/

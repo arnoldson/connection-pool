@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" aria-labelledby="t d">
+<title id="t">CPU used by A and B at 1,000 req/s</title>
+<desc id="d">pool: A 29%, B 8%, total 37%; jetty: A 37%, B 8%, total 45%; mitigation: A 32%, B 25%, total 56%</desc>
+<style>
+.root { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --grid:#e1e0d9; --axis:#c3c2b7;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --o1:#86b6ef; --o2:#2a78d6; --o3:#104281; }
+@media (prefers-color-scheme: dark) {
+  .root { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#383835;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --o1:#184f95; --o2:#3987e5; --o3:#9ec5f4; } }
+text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 12px; }
+.title { fill: var(--ink); font-size: 15px; font-weight: 600; }
+.sub { font-size: 12px; }
+.tick { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.label { fill: var(--ink); font-size: 12px; }
+.grid { stroke: var(--grid); stroke-width: 1; }
+.axis { stroke: var(--axis); stroke-width: 1; }
+.line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+</style>
+<g class="root">
+<rect width="720" height="380" rx="8" fill="var(--surface)"/>
+<text class="title" x="64" y="28">CPU used by A and B at 1,000 req/s</text>
+<text class="sub" x="64" y="48">Average % of one core during the load. A new connection per request costs the server most.</text>
+<line class="axis" x1="64" x2="608" y1="336.0" y2="336.0"/>
+<text class="tick" x="56" y="340.0" text-anchor="end">0%</text>
+<line class="grid" x1="64" x2="608" y1="275.0" y2="275.0"/>
+<text class="tick" x="56" y="279.0" text-anchor="end">20%</text>
+<line class="grid" x1="64" x2="608" y1="214.0" y2="214.0"/>
+<text class="tick" x="56" y="218.0" text-anchor="end">40%</text>
+<line class="grid" x1="64" x2="608" y1="153.0" y2="153.0"/>
+<text class="tick" x="56" y="157.0" text-anchor="end">60%</text>
+<line class="grid" x1="64" x2="608" y1="92.0" y2="92.0"/>
+<text class="tick" x="56" y="96.0" text-anchor="end">80%</text>
+<path d="M142.7,336.0 L142.7,248.1 L166.7,248.1 L166.7,336.0 Z" fill="var(--s1)"/>
+<path d="M142.7,246.1 L142.7,226.3 Q142.7,222.3 146.7,222.3 L162.7,222.3 Q166.7,222.3 166.7,226.3 L166.7,246.1 Z" fill="var(--s2)"/>
+<text class="label" x="154.7" y="216.3" text-anchor="middle">37%</text>
+<text class="label" x="154.7" y="356" text-anchor="middle">pool</text>
+<path d="M324.0,336.0 L324.0,222.2 L348.0,222.2 L348.0,336.0 Z" fill="var(--s1)"/>
+<path d="M324.0,220.2 L324.0,200.0 Q324.0,196.0 328.0,196.0 L344.0,196.0 Q348.0,196.0 348.0,200.0 L348.0,220.2 Z" fill="var(--s2)"/>
+<text class="label" x="336.0" y="190.0" text-anchor="middle">45%</text>
+<text class="label" x="336.0" y="356" text-anchor="middle">jetty</text>
+<path d="M505.3,336.0 L505.3,239.9 L529.3,239.9 L529.3,336.0 Z" fill="var(--s1)"/>
+<path d="M505.3,237.9 L505.3,166.6 Q505.3,162.6 509.3,162.6 L525.3,162.6 Q529.3,162.6 529.3,166.6 L529.3,237.9 Z" fill="var(--s2)"/>
+<text class="label" x="517.3" y="156.6" text-anchor="middle">56%</text>
+<text class="label" x="517.3" y="356" text-anchor="middle">mitigation</text>
+<rect x="64" y="62" width="12" height="12" rx="3" fill="var(--s1)"/>
+<text x="86" y="72">A (caller)</text>
+<rect x="180.0" y="62" width="12" height="12" rx="3" fill="var(--s2)"/>
+<text x="202.0" y="72">B (server)</text>
+</g>
+</svg>
