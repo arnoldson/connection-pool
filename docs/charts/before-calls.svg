@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" aria-labelledby="t d">
+<title id="t">before: successful vs failed calls per second</title>
+<desc id="d">Per-second successes and errors for the before scenario: about 1,000 ok/s until 30 s, then errors until about 65 s, ok again until about 95 s, then errors again.</desc>
+<style>
+.root { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --grid:#e1e0d9; --axis:#c3c2b7;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --o1:#86b6ef; --o2:#2a78d6; --o3:#104281; }
+@media (prefers-color-scheme: dark) {
+  .root { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#383835;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --o1:#184f95; --o2:#3987e5; --o3:#9ec5f4; } }
+text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 12px; }
+.title { fill: var(--ink); font-size: 15px; font-weight: 600; }
+.sub { font-size: 12px; }
+.tick { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.label { fill: var(--ink); font-size: 12px; }
+.grid { stroke: var(--grid); stroke-width: 1; }
+.axis { stroke: var(--axis); stroke-width: 1; }
+.line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+</style>
+<g class="root">
+<rect width="720" height="380" rx="8" fill="var(--surface)"/>
+<text class="title" x="64" y="28">before: successful vs failed calls per second</text>
+<text class="sub" x="64" y="48">Fails when the ports run out, recovers as 60 s TIME_WAITs expire, then fails again.</text>
+<line class="axis" x1="64" x2="608" y1="336.0" y2="336.0"/>
+<text class="tick" x="56" y="340.0" text-anchor="end">0</text>
+<line class="grid" x1="64" x2="608" y1="285.2" y2="285.2"/>
+<text class="tick" x="56" y="289.2" text-anchor="end">250</text>
+<line class="grid" x1="64" x2="608" y1="234.3" y2="234.3"/>
+<text class="tick" x="56" y="238.3" text-anchor="end">500</text>
+<line class="grid" x1="64" x2="608" y1="183.5" y2="183.5"/>
+<text class="tick" x="56" y="187.5" text-anchor="end">750</text>
+<line class="grid" x1="64" x2="608" y1="132.7" y2="132.7"/>
+<text class="tick" x="56" y="136.7" text-anchor="end">1,000</text>
+<line class="grid" x1="64" x2="608" y1="81.8" y2="81.8"/>
+<text class="tick" x="56" y="85.8" text-anchor="end">1,250</text>
+<text class="tick" x="64.0" y="354" text-anchor="middle">0s</text>
+<text class="tick" x="172.8" y="354" text-anchor="middle">30s</text>
+<text class="tick" x="281.6" y="354" text-anchor="middle">60s</text>
+<text class="tick" x="390.4" y="354" text-anchor="middle">90s</text>
+<text class="tick" x="499.2" y="354" text-anchor="middle">120s</text>
+<text class="tick" x="608.0" y="354" text-anchor="middle">150s</text>
+<text class="tick" x="336.0" y="372" text-anchor="middle">seconds into the load</text>
+<path class="line" d="M67.6,253.0 L71.3,132.9 L74.9,132.9 L78.5,132.3 L82.1,132.7 L85.8,132.9 L89.4,132.7 L93.0,132.7 L96.6,131.4 L100.3,133.7 L103.9,132.7 L107.5,132.3 L111.1,133.1 L114.8,132.5 L118.4,132.7 L122.0,132.9 L125.7,133.3 L129.3,132.5 L132.9,132.1 L136.5,133.1 L140.2,132.3 L143.8,133.5 L147.4,132.5 L151.0,132.3 L154.7,133.1 L158.3,132.3 L161.9,132.5 L165.5,132.7 L169.2,168.9 L172.8,336.0 L176.4,336.0 L180.1,336.0 L183.7,336.0 L187.3,336.0 L190.9,336.0 L194.6,336.0 L198.2,336.0 L201.8,336.0 L205.4,336.0 L209.1,336.0 L212.7,336.0 L216.3,336.0 L219.9,336.0 L223.6,336.0 L227.2,336.0 L230.8,336.0 L234.5,336.0 L238.1,336.0 L241.7,336.0 L245.3,336.0 L249.0,336.0 L252.6,336.0 L256.2,336.0 L259.8,336.0 L263.5,336.0 L267.1,336.0 L270.7,336.0 L274.3,336.0 L278.0,336.0 L281.6,336.0 L285.2,336.0 L288.9,234.1 L292.5,253.0 L296.1,336.0 L299.7,336.0 L303.4,253.9 L307.0,133.7 L310.6,131.9 L314.2,132.5 L317.9,132.7 L321.5,132.7 L325.1,132.5 L328.7,132.9 L332.4,133.5 L336.0,131.9 L339.6,132.7 L343.3,132.3 L346.9,133.1 L350.5,132.3 L354.1,133.5 L357.8,132.5 L361.4,132.9 L365.0,131.9 L368.6,133.3 L372.3,132.5 L375.9,132.9 L379.5,133.1 L383.1,132.9 L386.8,133.1 L390.4,132.1 L394.0,132.3 L397.7,133.1 L401.3,148.7 L404.9,336.0 L408.5,336.0 L412.2,336.0 L415.8,336.0 L419.4,336.0 L423.0,336.0 L426.7,336.0 L430.3,336.0 L433.9,336.0 L437.5,336.0 L441.2,336.0 L444.8,336.0 L448.4,336.0 L452.1,336.0 L455.7,336.0 L459.3,336.0 L462.9,336.0 L466.6,336.0 L470.2,336.0 L473.8,336.0 L477.4,336.0 L481.1,336.0 L484.7,336.0 L488.3,336.0 L491.9,336.0 L495.6,336.0 L499.2,336.0 L502.8,336.0 L506.5,336.0 L510.1,323.0 L513.7,164.2 L517.3,336.0 L521.0,336.0 L524.6,336.0 L528.2,139.4 L531.8,240.0 L535.5,336.0 L539.1,336.0 L542.7,159.3 L546.3,131.9 L550.0,132.5 L553.6,133.7 L557.2,134.1 L560.9,131.2 L564.5,132.3 L568.1,133.3 L571.7,132.9 L575.4,132.1 L579.0,133.3 L582.6,133.3 L586.2,131.9 L589.9,132.9 L593.5,132.5 L597.1,132.3 L600.7,133.3 L604.4,132.7 L608.0,132.5" stroke="var(--s1)"/>
+<path class="line" d="M67.6,336.0 L71.3,336.0 L74.9,336.0 L78.5,336.0 L82.1,336.0 L85.8,336.0 L89.4,336.0 L93.0,336.0 L96.6,336.0 L100.3,336.0 L103.9,336.0 L107.5,336.0 L111.1,336.0 L114.8,336.0 L118.4,336.0 L122.0,336.0 L125.7,336.0 L129.3,336.0 L132.9,336.0 L136.5,336.0 L140.2,336.0 L143.8,336.0 L147.4,336.0 L151.0,336.0 L154.7,336.0 L158.3,336.0 L161.9,336.0 L165.5,336.0 L169.2,300.2 L172.8,132.5 L176.4,132.1 L180.1,132.9 L183.7,132.5 L187.3,132.9 L190.9,133.1 L194.6,132.7 L198.2,132.7 L201.8,132.7 L205.4,133.3 L209.1,131.9 L212.7,132.9 L216.3,132.7 L219.9,132.7 L223.6,132.7 L227.2,132.5 L230.8,132.7 L234.5,133.1 L238.1,133.1 L241.7,132.5 L245.3,132.5 L249.0,132.9 L252.6,132.1 L256.2,133.1 L259.8,132.7 L263.5,132.3 L267.1,132.7 L270.7,132.7 L274.3,132.9 L278.0,132.9 L281.6,132.3 L285.2,133.1 L288.9,234.3 L292.5,215.4 L296.1,132.3 L299.7,133.5 L303.4,214.4 L307.0,336.0 L310.6,336.0 L314.2,336.0 L317.9,336.0 L321.5,336.0 L325.1,336.0 L328.7,336.0 L332.4,336.0 L336.0,336.0 L339.6,336.0 L343.3,336.0 L346.9,336.0 L350.5,336.0 L354.1,336.0 L357.8,336.0 L361.4,336.0 L365.0,336.0 L368.6,336.0 L372.3,336.0 L375.9,336.0 L379.5,335.6 L383.1,336.0 L386.8,336.0 L390.4,336.0 L394.0,336.0 L397.7,336.0 L401.3,319.9 L404.9,132.1 L408.5,133.5 L412.2,132.3 L415.8,132.7 L419.4,132.3 L423.0,132.9 L426.7,133.1 L430.3,132.3 L433.9,133.3 L437.5,132.5 L441.2,132.7 L444.8,132.7 L448.4,132.9 L452.1,132.5 L455.7,132.7 L459.3,133.1 L462.9,132.1 L466.6,133.3 L470.2,132.1 L473.8,133.3 L477.4,132.1 L481.1,133.5 L484.7,131.9 L488.3,132.9 L491.9,132.9 L495.6,132.5 L499.2,132.5 L502.8,133.3 L506.5,132.7 L510.1,144.9 L513.7,304.7 L517.3,133.1 L521.0,132.3 L524.6,132.5 L528.2,328.9 L531.8,229.7 L535.5,132.3 L539.1,132.5 L542.7,310.0 L546.3,336.0 L550.0,336.0 L553.6,336.0 L557.2,335.4 L560.9,336.0 L564.5,336.0 L568.1,336.0 L571.7,336.0 L575.4,336.0 L579.0,336.0 L582.6,336.0 L586.2,336.0 L589.9,336.0 L593.5,336.0 L597.1,336.0 L600.7,336.0 L604.4,336.0 L608.0,336.0" stroke="var(--s2)"/>
+<circle cx="608.0" cy="132.5" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="label" x="618.0" y="136.5">ok</text>
+<circle cx="608.0" cy="336.0" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<text class="label" x="618.0" y="340.0">errors</text>
+<line x1="64" y1="68" x2="80" y2="68" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+<text x="86" y="72">ok</text>
+<line x1="122.4" y1="68" x2="138.4" y2="68" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+<text x="144.4" y="72">errors</text>
+</g>
+</svg>

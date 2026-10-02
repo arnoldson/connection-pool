@@ -174,7 +174,7 @@ new connection costs CPU in two ways:
 cost 2 mostly disappears: A's CPU was 32% of a core vs the pool's 29%. Cost 1
 doesn't disappear, and most of it lands on the **server**. B has to accept and
 tear down 1,000 connections per second: **25% of a core vs 8% with the pool.**
-In total (A + B), that's 57% vs 37%, about 1.5× the pool. Latency was worse
+In total (A + B), that's 56% vs 37%, about 1.5× the pool. Latency was worse
 too: p50 +60%, p90 2×, p99 +56%. A pool pays these costs once per pooled
 connection, and then never again.
 

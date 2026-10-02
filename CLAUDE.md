@@ -12,6 +12,8 @@ anything network-related; docs/OVERVIEW.md is the plain-language version.
 - Pool settings for service A: `POOL_MAX`, `POOL_ON_EXHAUSTED` (block|fail-fast),
   `POOL_ACQUIRE_TIMEOUT_MS`, `POOL_MAX_IDLE_MS`
 - Kernel-only repro (no Java): `scripts/kernel-smoke.sh`
+- Charts: `python3 scripts/plot.py` (stdlib only) regenerates `docs/charts/*.svg` from `results/`;
+  rerun it after new results, and keep README/BACKGROUND numbers in sync with `results/`.
 - Scripts target macOS's bash 3.2 (no associative arrays, BSD sed).
 
 ## Workflow

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" aria-labelledby="t d">
+<title id="t">Latency percentiles at 1,000 req/s</title>
+<desc id="d">pool: p50 0.55 ms, p90 1.34 ms, p99 3.17 ms; jetty: p50 0.71 ms, p90 1.57 ms, p99 3.57 ms; mitigation: p50 0.88 ms, p90 2.84 ms, p99 4.94 ms</desc>
+<style>
+.root { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --grid:#e1e0d9; --axis:#c3c2b7;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --o1:#86b6ef; --o2:#2a78d6; --o3:#104281; }
+@media (prefers-color-scheme: dark) {
+  .root { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#383835;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --o1:#184f95; --o2:#3987e5; --o3:#9ec5f4; } }
+text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink2); font-size: 12px; }
+.title { fill: var(--ink); font-size: 15px; font-weight: 600; }
+.sub { font-size: 12px; }
+.tick { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.label { fill: var(--ink); font-size: 12px; }
+.grid { stroke: var(--grid); stroke-width: 1; }
+.axis { stroke: var(--axis); stroke-width: 1; }
+.line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+</style>
+<g class="root">
+<rect width="720" height="380" rx="8" fill="var(--surface)"/>
+<text class="title" x="64" y="28">Latency percentiles at 1,000 req/s</text>
+<text class="sub" x="64" y="48">Measured by oha with coordinated-omission correction. Lower is better.</text>
+<line class="axis" x1="64" x2="608" y1="336.0" y2="336.0"/>
+<text class="tick" x="56" y="340.0" text-anchor="end">0 ms</text>
+<line class="grid" x1="64" x2="608" y1="254.7" y2="254.7"/>
+<text class="tick" x="56" y="258.7" text-anchor="end">2 ms</text>
+<line class="grid" x1="64" x2="608" y1="173.3" y2="173.3"/>
+<text class="tick" x="56" y="177.3" text-anchor="end">4 ms</text>
+<line class="grid" x1="64" x2="608" y1="92.0" y2="92.0"/>
+<text class="tick" x="56" y="96.0" text-anchor="end">6 ms</text>
+<path d="M116.7,336.0 L116.7,317.7 Q116.7,313.7 120.7,313.7 L136.7,313.7 Q140.7,313.7 140.7,317.7 L140.7,336.0 Z" fill="var(--o1)"/>
+<text class="tick" x="128.7" y="307.7" text-anchor="middle">0.55</text>
+<path d="M142.7,336.0 L142.7,285.4 Q142.7,281.4 146.7,281.4 L162.7,281.4 Q166.7,281.4 166.7,285.4 L166.7,336.0 Z" fill="var(--o2)"/>
+<text class="tick" x="154.7" y="275.4" text-anchor="middle">1.34</text>
+<path d="M168.7,336.0 L168.7,211.1 Q168.7,207.1 172.7,207.1 L188.7,207.1 Q192.7,207.1 192.7,211.1 L192.7,336.0 Z" fill="var(--o3)"/>
+<text class="tick" x="180.7" y="201.1" text-anchor="middle">3.17</text>
+<text class="label" x="154.7" y="356" text-anchor="middle">pool</text>
+<path d="M298.0,336.0 L298.0,311.1 Q298.0,307.1 302.0,307.1 L318.0,307.1 Q322.0,307.1 322.0,311.1 L322.0,336.0 Z" fill="var(--o1)"/>
+<text class="tick" x="310.0" y="301.1" text-anchor="middle">0.71</text>
+<path d="M324.0,336.0 L324.0,276.1 Q324.0,272.1 328.0,272.1 L344.0,272.1 Q348.0,272.1 348.0,276.1 L348.0,336.0 Z" fill="var(--o2)"/>
+<text class="tick" x="336.0" y="266.1" text-anchor="middle">1.57</text>
+<path d="M350.0,336.0 L350.0,194.9 Q350.0,190.9 354.0,190.9 L370.0,190.9 Q374.0,190.9 374.0,194.9 L374.0,336.0 Z" fill="var(--o3)"/>
+<text class="tick" x="362.0" y="184.9" text-anchor="middle">3.57</text>
+<text class="label" x="336.0" y="356" text-anchor="middle">jetty</text>
+<path d="M479.3,336.0 L479.3,304.1 Q479.3,300.1 483.3,300.1 L499.3,300.1 Q503.3,300.1 503.3,304.1 L503.3,336.0 Z" fill="var(--o1)"/>
+<text class="tick" x="491.3" y="294.1" text-anchor="middle">0.88</text>
+<path d="M505.3,336.0 L505.3,224.3 Q505.3,220.3 509.3,220.3 L525.3,220.3 Q529.3,220.3 529.3,224.3 L529.3,336.0 Z" fill="var(--o2)"/>
+<text class="tick" x="517.3" y="214.3" text-anchor="middle">2.84</text>
+<path d="M531.3,336.0 L531.3,139.1 Q531.3,135.1 535.3,135.1 L551.3,135.1 Q555.3,135.1 555.3,139.1 L555.3,336.0 Z" fill="var(--o3)"/>
+<text class="tick" x="543.3" y="129.1" text-anchor="middle">4.94</text>
+<text class="label" x="517.3" y="356" text-anchor="middle">mitigation</text>
+<rect x="64" y="62" width="12" height="12" rx="3" fill="var(--o1)"/>
+<text x="86" y="72">p50</text>
+<rect x="129.6" y="62" width="12" height="12" rx="3" fill="var(--o2)"/>
+<text x="151.6" y="72">p90</text>
+<rect x="195.2" y="62" width="12" height="12" rx="3" fill="var(--o3)"/>
+<text x="217.2" y="72">p99</text>
+</g>
+</svg>
