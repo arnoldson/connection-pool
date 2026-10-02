@@ -76,12 +76,12 @@ a TCP connection, so latency drops too.
 Kernel tweaks (a wider port range, turning reuse on) raise the limit but keep
 paying that setup cost on every request. They're mitigations, not the fix.
 
-That cost isn't just latency. It's CPU. Opening and closing a connection per
-request takes processing power, and as the parking lot fills up, finding a
-free space gets more expensive: the kernel has to check more and more taken
-spaces before it finds an open one. In our reproduction, A's CPU use more than
-doubled at the same request rate as the lot filled, and all that effort went
-into looking for ports instead of doing useful work. A pool pays for each
-connection once and then reuses it.
+That cost isn't just latency. It's CPU, on both ends. Every new connection
+means a handshake and a teardown for the caller *and* the server. In our tests
+the server needed about three times the CPU when every request opened a new
+connection, even with the kernel's reuse shortcut turned on. And when the
+parking lot is nearly full, finding a free space gets expensive too: A's CPU
+more than doubled while it searched for ports that weren't there. A pool pays
+for each connection once and then reuses it.
 
 For the full technical detail, see [BACKGROUND.md](BACKGROUND.md).
